@@ -67,6 +67,23 @@ pharmacy = {
     }
 }
 
+
+def add_drug():
+    print("_______ADD A DRUG_________")
+
+    name = input('Enter the name of the drug: > ')
+    category = input('Enter the category of the drug: > ')
+    price = input('Enter the price of the drug: > ')
+    stock = input('Enter the quantity of drugs to add: > ')
+    description = input('Enter the description of the drug: >')
+
+    pharmacy[name] = {"category": category, "price": price, "stock": stock, "description": description}
+
+    print(f"You have successfully added '{name}' to the pharmacy")
+
+
+
+
 def show_menu():
     print("")
     print(" Pharmacy system ")
@@ -93,6 +110,9 @@ def main():
     print("" + str(len(pharmacy)) + " drugs loaded. ")
 
     show_menu()
+    
+    choice = input("Select an option from the menu: > ")
 
+    if choice == "1": add_drug()
 
 main()
