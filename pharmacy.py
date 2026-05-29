@@ -105,6 +105,27 @@ def remove_drug():
     print(f"You have successfully removed '{name}' from the pharmacy")
 
 
+def search_for_drug():
+    print("______SEARCH FOR A DRUG______")
+
+    name = input("Enter the name of the drug: > ")
+
+    drug_name = find_drug(name)
+
+    if drug_name is None:
+        print("This drug is not found")
+        return
+    
+    drug = pharmacy[drug_name]
+
+    category = drug["category"]
+    price = drug["price"]
+    stock = drug["stock"]
+
+    print(f"The drug name: {drug_name}")
+    print(f"The drug category: {category}")
+    print(f"The drug price: #{price}")
+    print(f"Qty in stock: {stock}")
 
 
 
@@ -135,6 +156,9 @@ def main():
     if choice == "1": 
         add_drug()
         print("" + str(len(pharmacy)) + " drugs now in the pharmacy. ")
+
+    if choice == '2':
+        search_for_drug()
 
     if choice == '5':
         remove_drug()
