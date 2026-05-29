@@ -68,6 +68,13 @@ pharmacy = {
 }
 
 
+
+def find_drug(name):
+    for drug_name in pharmacy:
+        if drug_name.lower() == name.lower():
+            return drug_name
+    return None
+
 def add_drug():
     print("_______ADD A DRUG_________")
 
@@ -80,6 +87,23 @@ def add_drug():
     pharmacy[name] = {"category": category, "price": price, "stock": stock, "description": description}
 
     print(f"You have successfully added '{name}' to the pharmacy")
+
+
+def remove_drug():
+    print("________REMOVE A DRUG_________")
+
+    name = input('Enter the name of the drug: > ')
+
+    drug_name = find_drug(name)
+
+    if drug_name is None:
+        print("This drug is not found")
+        return
+    
+    del pharmacy[drug_name]
+
+    print(f"You have successfully removed '{name}' from the pharmacy")
+
 
 
 
@@ -99,11 +123,6 @@ def show_menu():
 
 
 
-
-
-
-
-
 def main():
     print("")
     print(" Welcome to the Pharmacy System")
@@ -113,6 +132,13 @@ def main():
     
     choice = input("Select an option from the menu: > ")
 
-    if choice == "1": add_drug()
+    if choice == "1": 
+        add_drug()
+        print("" + str(len(pharmacy)) + " drugs now in the pharmacy. ")
+
+    if choice == '5':
+        remove_drug()
+        print("" + str(len(pharmacy)) + " drugs now in the pharmacy. ")
+
 
 main()
